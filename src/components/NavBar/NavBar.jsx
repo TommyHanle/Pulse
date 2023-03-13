@@ -10,8 +10,11 @@ export default function NavBar({ user, setUser }) {
 
     return (
         <nav>
-            &nbsp;&nbsp; Welcome, {user.name}
-            &nbsp;&nbsp;<Link to="" onClick={handleLogOut}>Log Out</Link>
+            <div>PULSE</div>
+            <div>
+                Welcome, {user.name}
+                &nbsp;&nbsp;<Link to="" onClick={handleLogOut}>Log Out</Link>
+            </div>
         </nav>
     )
 }

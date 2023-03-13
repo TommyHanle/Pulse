@@ -9,7 +9,6 @@ export function SearchCard({ priceData, forecastsData }) {
 
   return (
     <>
-      <h2>Price Data</h2>
       {priceData.map((priceRow, index) => {
         const forecastsRow = forecastsData[index];
         const forecastValues = forecastsRow
@@ -36,42 +35,31 @@ export function SearchCard({ priceData, forecastsData }) {
 
         return (
           <div className="card" key={index}>
-            <p>
-              {priceRow[6]}, {/* Column C */}
-              {priceRow[5]} - {/* Column F */}
-              {priceRow[2]} - {/* Column G */}
-              {priceRow[8]}
+            <p id="location">
+              {priceRow[6]}, {priceRow[5]} - {priceRow[2]} - {priceRow[8]}
             </p>{" "}
-            {/* Column I */}
-            <p>Current Average Home Value: ${currentPrice.toLocaleString()}</p> {/* Column J */}
-            <ul>
-              <li>Value 1: {forecastValues[0] != null ? forecastValues[0].toLocaleString() : '-'}</li>
-              <li>Value 2: {forecastValues[1] != null ? forecastValues[1].toLocaleString() : '-'}</li>
-              <li>Value 3: {forecastValues[2] != null ? forecastValues[2].toLocaleString() : '-'}</li>
-            </ul>
-            <div>
-              <label>
-                Enter your current estimated home value:
-                <input type="number" min="0" step="1000" value={userInputValue || ''} onChange={handleUserInputChange} />
-              </label>
+            <div id="average">
+              <div id="CAHV"><p>Current Average Home Value: ${currentPrice.toLocaleString()}</p> {/* Column J */} </div>
+              <div id="CAHVNM"><p>Next Month: ${forecastValues[0] != null ? forecastValues[0].toLocaleString() : '-'}</p></div>
+              <div id="CAHVNQ"><p>Next Quarter: ${forecastValues[1] != null ? forecastValues[1].toLocaleString() : '-'}</p></div>
+              <div id="CAHVNY"><p>Next Year: ${forecastValues[2] != null ? forecastValues[2].toLocaleString() : '-'}</p></div>
             </div>
-            <ul>
-              <li>User Value 1: {userForecastValues[0] != null ? userForecastValues[0].toLocaleString() : '-'}</li>
-              <li>User Value 2: {userForecastValues[1] != null ? userForecastValues[1].toLocaleString() : '-'}</li>
-              <li>User Value 3: {userForecastValues[2] != null ? userForecastValues[2].toLocaleString() : '-'}</li>
-            </ul>
+            <div id="custom">
+              <div id="CEHV">
+                <label>
+                  Enter your current estimated home value: $ 
+                  <input type="number" min="0" step="1000" value={userInputValue || ''} onChange={handleUserInputChange} />
+                </label>
+              </div>
+              <div id="CEHVNM"><p>Next Month: ${userForecastValues[0] != null ? userForecastValues[0].toLocaleString() : '-'}</p></div>
+              <div id="CEHVNQ"><p>Next Quarter: ${userForecastValues[1] != null ? userForecastValues[1].toLocaleString() : '-'}</p></div>
+              <div id="CEHVNY"><p>Next Year: ${userForecastValues[2] != null ? userForecastValues[2].toLocaleString() : '-'}</p></div>
+            </div>
           </div>
         );
       })}
 
-      <h2>Forecasts Data</h2>
-      {forecastsData.map((row, index) => (
-        <div className="card" key={index}>
-          <p> {row[10]} </p>
-          <p> {row[11]} </p>
-          <p> {row[12]} </p>
-        </div>
-      ))}
+
     </>
   );
 }
