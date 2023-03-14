@@ -4,7 +4,7 @@ import mapboxgl from 'mapbox-gl';
 export default function MapCard({ searchZip, accessToken }) {
   const [map, setMap] = useState(null);
 
-  useEffect(() => {
+   useEffect(() => {
     const url = `/api/mapbox/${searchZip}`;
     fetch(url)
       .then(response => response.json())
