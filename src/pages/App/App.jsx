@@ -28,8 +28,6 @@ export default function App() {
       console.error('Error:', error);
     }
   };
-  
-  
 
   return (
     <main className="App">
