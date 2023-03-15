@@ -39,21 +39,35 @@ export function SearchCard({ priceData, forecastsData }) {
               {priceRow[6]}, {priceRow[5]} - {priceRow[2]} - {priceRow[8]}
             </p>{" "}
             <div id="average">
-              <div id="CAHV"><p>Current Average Home Value: ${currentPrice.toLocaleString()}</p> {/* Column J */} </div>
-              <div id="CAHVNM"><p>Next Month: ${forecastValues[0] != null ? forecastValues[0].toLocaleString() : '-'}</p></div>
-              <div id="CAHVNQ"><p>Next Quarter: ${forecastValues[1] != null ? forecastValues[1].toLocaleString() : '-'}</p></div>
-              <div id="CAHVNY"><p>Next Year: ${forecastValues[2] != null ? forecastValues[2].toLocaleString() : '-'}</p></div>
+              <div className="specialtext">
+                <p><span className="bold-text">Current Average Home Value: $</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{currentPrice.toLocaleString()}</p>
+              </div>
+              <div className="text">
+                <p><span className="bold-text">Next Month: $</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{forecastValues[0] != null ? forecastValues[0].toLocaleString() : '-'}</p>
+              </div>
+              <div className="text">
+                <p><span className="bold-text">Next Quarter: $</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{forecastValues[1] != null ? forecastValues[1].toLocaleString() : '-'}</p>
+              </div>
+              <div className="text">
+                <p><span className="bold-text">Next Year: $</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{forecastValues[2] != null ? forecastValues[2].toLocaleString() : '-'}</p>
+              </div>
             </div>
             <div id="custom">
               <div id="CEHV">
                 <label>
-                  Enter your current estimated home value: $ 
+                  <span className="bold-text">Custom Value: $ </span>
                   <input type="number" min="0" step="1000" value={userInputValue || ''} onChange={handleUserInputChange} />
                 </label>
               </div>
-              <div id="CEHVNM"><p>Next Month: ${userForecastValues[0] != null ? userForecastValues[0].toLocaleString() : '-'}</p></div>
-              <div id="CEHVNQ"><p>Next Quarter: ${userForecastValues[1] != null ? userForecastValues[1].toLocaleString() : '-'}</p></div>
-              <div id="CEHVNY"><p>Next Year: ${userForecastValues[2] != null ? userForecastValues[2].toLocaleString() : '-'}</p></div>
+              <div className="text">
+                <p><span className="bold-text">Next Month: $</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{userForecastValues[0] != null ? userForecastValues[0].toLocaleString() : '-'}</p>
+              </div>
+              <div className="text">
+                <p><span className="bold-text">Next Quarter: $</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{userForecastValues[1] != null ? userForecastValues[1].toLocaleString() : '-'}</p>
+              </div>
+              <div className="text">
+                <p><span className="bold-text">Next Year: $</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{userForecastValues[2] != null ? userForecastValues[2].toLocaleString() : '-'}</p>
+              </div>
             </div>
           </div>
         );

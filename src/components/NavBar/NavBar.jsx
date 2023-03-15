@@ -10,10 +10,11 @@ export default function NavBar({ user, setUser }) {
 
     return (
         <nav>
-            <div>PULSE</div>
+            <div id="pulsenav">PULSE</div>
             <div>
                 Welcome, {user.name}
-                &nbsp;&nbsp;<Link to="" onClick={handleLogOut}>Log Out</Link>
+                
+                &nbsp;&nbsp;&nbsp;&nbsp;<Link to="" onClick={handleLogOut}>Log Out</Link>
             </div>
         </nav>
     )

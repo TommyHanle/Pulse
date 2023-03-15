@@ -1,44 +1,40 @@
 import { useState, useEffect } from 'react';
 import mapboxgl from 'mapbox-gl';
 
-export default function MapCard({ searchZip, accessToken }) {
+
+export default function MapCard({ searchZip }) {
   const [map, setMap] = useState(null);
 
-   useEffect(() => {
-    const url = `/api/mapbox/${searchZip}`;
-    fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        const { lng, lat, accessToken } = data;
-        mapboxgl.accessToken = accessToken;
-        const newMap = new mapboxgl.Map({
-          container: 'map',
-          style: 'mapbox://styles/mapbox/streets-v11',
-          center: [lng, lat],
-          zoom: 12
-        });
-        if (map) {
-          map.remove();
-        }
-        setMap(newMap);
-        return () => {
-          newMap.remove();
-        };
-      })
-      .catch(error => console.log(error));
-  }, [searchZip]);
+  useEffect(() => {
+    mapboxgl.accessToken = process.env.REACT_APP_MAPBOX;
+    const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v11',
+      center: [-122.42, 37.77],
+      zoom: 12
+    });
+    setMap(map);
 
+    return () => {
+      map.remove();
+    };
+  }, []);
 
   useEffect(() => {
-    if (map) {
-      const url = `/api/mapbox/${searchZip}`;
-      fetch(url)
+    if (searchZip && map) {
+      fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${searchZip}.json?country=US&access_token=${mapboxgl.accessToken}`)
         .then(response => response.json())
         .then(data => {
-          const { lng, lat } = data;
+          const lng = data.features[0].center[0];
+          const lat = data.features[0].center[1];
           map.flyTo({
             center: [lng, lat],
-            zoom: 12
+            zoom: 12,
+            speed: 1,
+            curve: 1,
+            easing(t) {
+              return t;
+            }
           });
         })
         .catch(error => console.log(error));

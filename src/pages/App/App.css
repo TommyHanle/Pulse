@@ -32,6 +32,9 @@ nav a:active {
   transform: scale(0.95);
 }
 
+#pulsenav {
+  font-size: 40;
+}
 
 /* Search Bar */
 
@@ -60,6 +63,7 @@ nav a:active {
   padding: 0 75px;
   margin: auto;
   width: 50%;
+  
 }
 
 #search-bar input[type="text"] {
@@ -70,6 +74,8 @@ nav a:active {
   margin: 0;
   outline: none;
   padding: 0;
+  color: rgb(70, 70, 70);
+  font-weight: bold;
 }
 
 #search-bar button[type="submit"] {
@@ -98,14 +104,16 @@ nav a:active {
 #location {
   justify-content: center;
   text-align: center;
-  margin-top: 10px;
+  margin-top: 15px;
   font-size: 25px;
   margin-bottom: 20px;
   position: absolute;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 25px;
-  color: grey
+  color: rgb(70, 70, 70);
+  font-weight: bold;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
 #average, #custom {
@@ -124,8 +132,14 @@ nav a:active {
   justify-content: space-between;
 }
 
-#CAHV, #CAHVNM, #CAHVNQ, #CAHVNY {
+
+#CAHV {
   flex: 1;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: -14px;
+  margin-bottom: -5px;
 }
 
 #CEHV {
@@ -142,9 +156,39 @@ nav a:active {
   width: 150px;
   border: 0px;
   border-color: white;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  margin-left: 10px;
+  color: rgb(70, 70, 70);
+  font-weight: bold;
 }
 
+.specialtext {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: -12px;
+  margin-bottom: -8px;
+}
+
+.text {
+  display: flex;
+  align-items: center;
+  margin-bottom: -20px;
+  
+}
+
+.text p {
+  display: flex;
+  margin-right: 10px;
+}
+
+.bold-text {
+  font-weight: bold;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+
+  font-size: 20px;
+}
 
 /* Map Card */
 
